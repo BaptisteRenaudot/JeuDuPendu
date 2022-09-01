@@ -91,7 +91,6 @@ function change() {
         e.innerText = (tabMot[i])
     }
 
-
 }
 
 setTimeout(change, 1000)
