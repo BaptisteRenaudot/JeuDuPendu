@@ -81,19 +81,45 @@ tabMot.forEach(e => {
 /** Fin de la séparation des lettres */
 
 /** Changement des underscores en mot */
-function change() {
+// function change() {
+//     let tabMot = motSecret.split('')
+//     let divUnderscore = document.querySelectorAll(".motSecret")
+
+//     for (let i = 0; i < divUnderscore.length; i++) {
+//         const e = divUnderscore[i];
+
+//         e.innerText = (tabMot[i])
+//     }
+
+
+// }
+
+// setTimeout(change, 1000)
+/** Fin du changement des underscores en lettres */
+
+
+/** Récupération de la valeur de l'input + affichage d'une lettre si trouvée par l'user*/
+let inputUserValue
+
+function validerLetter() {
+    let inputUser = document.querySelector(".inputLetter")
+    let inputUserValue = inputUser.value
+
     let tabMot = motSecret.split('')
     let divUnderscore = document.querySelectorAll(".motSecret")
 
     for (let i = 0; i < divUnderscore.length; i++) {
         const e = divUnderscore[i];
 
-        e.innerText = (tabMot[i])
+        if (inputUserValue === tabMot[i]) {
+            e.innerText = (tabMot[i])
+        }
+
     }
 
+    inputUser.value = "";
 }
+let buttonOk = document.querySelector(".okLetter")
 
-setTimeout(change, 1000)
-/** Fin du changement des underscores en lettres */
-
-
+buttonOk.addEventListener("click", validerLetter)
+/** Fin de la récupération + affichage*/

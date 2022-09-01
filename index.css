@@ -1,19 +1,40 @@
 body {
     margin: 0;
     padding: 0;
+    overflow-y: hidden;
 }
 
-.box {
+/* .box {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
+} */
+
+.contener {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    height: 100vh;
 }
 
 .motSecret {
+    display: inline-block;
     letter-spacing: 10px;
 }
 
 .demo {
     display: none;
+}
+
+.boxInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.inputLetter .okLetter {
+    margin-top: 10px;
 }
