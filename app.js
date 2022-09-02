@@ -98,8 +98,11 @@ tabMot.forEach(e => {
 /** Fin du changement des underscores en lettres */
 
 
-/** Récupération de la valeur de l'input + affichage d'une lettre si trouvée par l'user*/
+/** Récupération de la valeur de l'input + affichage d'une lettre si trouvée par l'user + Compte le nombre de réponses fausses*/
 let inputUserValue
+let long = 0
+let vie = 0
+let nbvie = 0
 
 function validerLetter() {
     let inputUser = document.querySelector(".inputLetter")
@@ -107,17 +110,28 @@ function validerLetter() {
 
     let tabMot = motSecret.split('')
     let divUnderscore = document.querySelectorAll(".motSecret")
+    let vie = 0
 
     for (let i = 0; i < divUnderscore.length; i++) {
         const e = divUnderscore[i];
 
         if (inputUserValue === tabMot[i]) {
             e.innerText = (tabMot[i])
+            vie++
         }
+    }
+
+    if (vie === 0) {
+        nbvie++
+        vie++
+    }
+
+    console.log("Nombre de lettres fausses : " + nbvie);
 
     inputUser.value = "";
 }
+
 let buttonOk = document.querySelector(".okLetter")
 
 buttonOk.addEventListener("click", validerLetter)
-/** Fin de la récupération + affichage*/
+/** Fin de la récupération + affichage + nombres de réponses fausses*/
