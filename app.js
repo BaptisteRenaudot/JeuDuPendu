@@ -98,17 +98,24 @@ tabMot.forEach(e => {
 /** Fin du changement des underscores en lettres */
 
 
-/** Récupération de la valeur de l'input + affichage d'une lettre si trouvée par l'user + Compte le nombre de réponses fausses*/
+/** Récupération de la valeur de l'input + affichage d'une lettre si trouvée par l'user + Compte le nombre de réponses fausses + Création d'une progressBar*/
 let inputUserValue
 let long = 0
 let vie = 0
 let nbvie = 0
+let longueur = 0
+let divise = 100 / tabMot.length
+let longProgress = divise
 
 function validerLetter() {
     let inputUser = document.querySelector(".inputLetter")
     let inputUserValue = inputUser.value
 
     let tabMot = motSecret.split('')
+
+
+    console.log(longProgress);
+
     let divUnderscore = document.querySelectorAll(".motSecret")
     let vie = 0
 
@@ -117,6 +124,11 @@ function validerLetter() {
 
         if (inputUserValue === tabMot[i]) {
             e.innerText = (tabMot[i])
+
+            document.querySelector(".progressBar").style.width = longProgress + "%";
+
+            longProgress = longProgress + divise
+
             vie++
         }
     }
@@ -134,4 +146,5 @@ function validerLetter() {
 let buttonOk = document.querySelector(".okLetter")
 
 buttonOk.addEventListener("click", validerLetter)
-/** Fin de la récupération + affichage + nombres de réponses fausses*/
+/** Fin de la récupération + Affichage + Nombres de réponses fausses + ProgressBar*/
+

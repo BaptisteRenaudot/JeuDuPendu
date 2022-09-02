@@ -4,13 +4,6 @@ body {
     overflow-y: hidden;
 }
 
-/* .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-} */
-
 .contener {
     display: flex;
     align-items: center;
@@ -37,4 +30,8 @@ body {
 
 .inputLetter .okLetter {
     margin-top: 10px;
+}
+
+.inputLetter:focus {
+    border-color: #6b7280;
 }
