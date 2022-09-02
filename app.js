@@ -115,8 +115,6 @@ function validerLetter() {
             e.innerText = (tabMot[i])
         }
 
-    }
-
     inputUser.value = "";
 }
 let buttonOk = document.querySelector(".okLetter")
