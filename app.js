@@ -56,7 +56,8 @@
 /** Récupération du mot aléatoire */
 let demo = document.querySelector(".demo")
 
-let motSecret = demo.innerHTML
+// let motSecret = demo.innerHTML
+let motSecret = "difficult"
 
 console.log(motSecret);
 /** Fin de la récupération du mot aléatoire */
@@ -106,6 +107,9 @@ let nbvie = 0
 let longueur = 0
 let divise = 100 / tabMot.length
 let longProgress = divise
+let once = []
+let count = 0
+let nbFewLetter = 0
 
 function validerLetter() {
     let inputUser = document.querySelector(".inputLetter")
@@ -119,19 +123,54 @@ function validerLetter() {
     let divUnderscore = document.querySelectorAll(".motSecret")
     let vie = 0
 
+    let count = tabMot.filter(x => x == inputUserValue).length
+
+    once.push(inputUserValue)
+
     for (let i = 0; i < divUnderscore.length; i++) {
         const e = divUnderscore[i];
+
+
 
         if (inputUserValue === tabMot[i]) {
             e.innerText = (tabMot[i])
 
-            document.querySelector(".progressBar").style.width = longProgress + "%";
+            if (once.includes(inputUserValue) && count > 1 && nbFewLetter < count) {
 
-            longProgress = longProgress + divise
+                document.querySelector(".progressBar").style.width = longProgress + "%";
+
+                longProgress = longProgress + divise
+
+                nbFewLetter++
+
+            } else if (once.includes(inputUserValue) && count > 1 && nbFewLetter >= count) {
+                console.log("Vous avez déjà entré cette lettre");
+
+                // Empêcher la saisie de ce caractère
+                // nbFewLetter = 0
+            }
+            else if (once.includes(inputUserValue) && count === 1) {
+                document.querySelector(".progressBar").style.width = longProgress + "%";
+
+                longProgress = longProgress + divise
+            } else {
+                console.log("Vous avez déjà entré cette lettre");
+            }
 
             vie++
         }
+
     }
+
+    console.log(window.event ? inputUserValue.keyCode : inputUserValue.which);
+
+    if (count > 1) {
+        console.log("Plusieurs fois la lettre " + inputUserValue);
+    }
+
+    console.log(count);
+
+    console.log("nbFewLetter " + nbFewLetter);
 
     if (vie === 0) {
         nbvie++
