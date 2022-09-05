@@ -56,8 +56,7 @@
 /** Récupération du mot aléatoire */
 let demo = document.querySelector(".demo")
 
-// let motSecret = demo.innerHTML
-let motSecret = "difficult"
+let motSecret = demo.innerHTML
 
 console.log(motSecret);
 /** Fin de la récupération du mot aléatoire */
@@ -110,6 +109,8 @@ let longProgress = divise
 let once = []
 let count = 0
 let nbFewLetter = 0
+let lettrePlusieursFoisTab = []
+let lettre = 0
 
 function validerLetter() {
     let inputUser = document.querySelector(".inputLetter")
@@ -125,44 +126,37 @@ function validerLetter() {
 
     let count = tabMot.filter(x => x == inputUserValue).length
 
+    let count2 = lettrePlusieursFoisTab.filter(x => x == inputUserValue).length
+
     once.push(inputUserValue)
 
     for (let i = 0; i < divUnderscore.length; i++) {
         const e = divUnderscore[i];
 
-
-
         if (inputUserValue === tabMot[i]) {
             e.innerText = (tabMot[i])
 
-            if (once.includes(inputUserValue) && count > 1 && nbFewLetter < count) {
-
+            if (count === 1 && count2 === 0) {
                 document.querySelector(".progressBar").style.width = longProgress + "%";
 
                 longProgress = longProgress + divise
 
-                nbFewLetter++
+                vie++
 
-            } else if (once.includes(inputUserValue) && count > 1 && nbFewLetter >= count) {
-                console.log("Vous avez déjà entré cette lettre");
-
-                // Empêcher la saisie de ce caractère
-                // nbFewLetter = 0
-            }
-            else if (once.includes(inputUserValue) && count === 1) {
+                lettrePlusieursFoisTab.push(inputUserValue)
+            } else if (count > 1 && count2 === 0) {
                 document.querySelector(".progressBar").style.width = longProgress + "%";
 
                 longProgress = longProgress + divise
-            } else {
-                console.log("Vous avez déjà entré cette lettre");
+
+                vie++
+
+                lettrePlusieursFoisTab.push(inputUserValue)
             }
 
-            vie++
         }
-
     }
 
-    console.log(window.event ? inputUserValue.keyCode : inputUserValue.which);
 
     if (count > 1) {
         console.log("Plusieurs fois la lettre " + inputUserValue);
@@ -186,4 +180,3 @@ let buttonOk = document.querySelector(".okLetter")
 
 buttonOk.addEventListener("click", validerLetter)
 /** Fin de la récupération + Affichage + Nombres de réponses fausses + ProgressBar*/
-
