@@ -111,6 +111,7 @@ let count = 0
 let nbFewLetter = 0
 let lettrePlusieursFoisTab = []
 let lettre = 0
+let lettreTrouvee = 0
 
 function validerLetter() {
     let inputUser = document.querySelector(".inputLetter")
@@ -143,6 +144,8 @@ function validerLetter() {
 
                 vie++
 
+                lettreTrouvee++
+
                 lettrePlusieursFoisTab.push(inputUserValue)
             } else if (count > 1 && count2 === 0) {
                 document.querySelector(".progressBar").style.width = longProgress + "%";
@@ -151,12 +154,15 @@ function validerLetter() {
 
                 vie++
 
+                lettreTrouvee++
+
                 lettrePlusieursFoisTab.push(inputUserValue)
             }
 
         }
     }
 
+    console.log("Lettre trouvée : " + lettreTrouvee);
 
     if (count > 1) {
         console.log("Plusieurs fois la lettre " + inputUserValue);
@@ -174,9 +180,27 @@ function validerLetter() {
     console.log("Nombre de lettres fausses : " + nbvie);
 
     inputUser.value = "";
+
+    if (nbvie > 7) {
+        document.querySelector(".contener").style.display = "none";
+        document.querySelector(".contener-loosers").removeAttribute("style")
+        document.querySelector(".p-loose").innerHTML = "Oh no! Unfortunately you didn't find the secret word in less than 7 wrong answers. You had to find the word \"" + motSecret + "\". Try again, I'm sure you'll succeed 🥵"
+        document.querySelector(".btn-reload-loose").addEventListener("click", reload)
+    } else if (lettreTrouvee === motSecret.length) {
+        document.querySelector(".contener").style.display = "none";
+        document.querySelector(".contener-win").removeAttribute("style")
+        document.querySelector(".p-win").innerHTML = "Well done ! The word was \"" + motSecret + "\". You found it in " + nbvie + " tries, so you won. If you want to try again, you can click on the button below, unless you are a wimp 🥶"
+        document.querySelector(".btn-reload").addEventListener("click", reload)
+    }
 }
 
 let buttonOk = document.querySelector(".okLetter")
 
 buttonOk.addEventListener("click", validerLetter)
 /** Fin de la récupération + Affichage + Nombres de réponses fausses + ProgressBar*/
+
+//** Création de la fonction pour reload la page */
+function reload() {
+    window.location.reload()
+}
+/** Fin de la fonction */

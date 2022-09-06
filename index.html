@@ -13,7 +13,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
 
-<body onKeyPress="if (event.keyCode == 13) validerLetter()">
+<body class="bg-gray-100 " onKeyPress="if (event.keyCode == 13) validerLetter()">
 
 
 
@@ -40,6 +40,54 @@
             <div style="width: 0; transition: 0.5s linear;" class="progressBar flex h-full bg-gray-500 transition">
             </div>
         </div>
+    </div>
+
+
+    <div class="contener-win" style="display: none;">
+        <section class="lg:py-12 lg:flex lg:justify-center">
+            <div class="bg-white dark:bg-gray-800 lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                <div class="lg:w-1/2">
+                    <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image: url('winners.svg')">
+                    </div>
+                </div>
+
+                <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Congratulations, <span
+                            class="text-blue-600 dark:text-blue-400">you have found the secret word !</span></h2>
+                    <p class="p-win mt-4 text-gray-600 dark:text-gray-400">
+                    </p>
+
+                    <div class="mt-8">
+                        <button class="btn-reload px-5 py-2 font-semibold text-gray-100 transition-colors duration-300 transform
+                            bg-gray-900 rounded-md hover:bg-gray-700">Play again !</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="contener-loosers" style="display: none;">
+        <section class="lg:py-12 lg:flex lg:justify-center">
+            <div class="bg-white dark:bg-gray-800 lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                <div class="lg:w-1/2">
+                    <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image: url('loosers.svg')">
+                    </div>
+                </div>
+
+                <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Oops, <span
+                            class="text-blue-600 dark:text-blue-400">it's sad but you couldn't find the secret word !
+                        </span></h2>
+                    <p class="p-loose mt-4 text-gray-600 dark:text-gray-400">
+                    </p>
+
+                    <div class="mt-8">
+                        <button class="btn-reload-loose px-5 py-2 font-semibold text-gray-100 transition-colors duration-300 transform
+                            bg-gray-900 rounded-md hover:bg-gray-700">Play again !</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="bundle.js"></script>

@@ -4,7 +4,9 @@ body {
     overflow-y: hidden;
 }
 
-.contener {
+.contener,
+.contener-win,
+.contener-loosers {
     display: flex;
     align-items: center;
     justify-content: center;
