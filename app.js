@@ -67,6 +67,9 @@ let tabMot = motSecret.split('')
 
 tabMot.forEach(e => {
     let div = document.createElement("div")
+
+    div.classList.add("dark:text-white")
+
     let contenu_div = document.createTextNode("_")
 
     div.appendChild(contenu_div)
@@ -184,7 +187,7 @@ function validerLetter() {
     if (nbvie > 7) {
         document.querySelector(".contener").style.display = "none";
         document.querySelector(".contener-loosers").removeAttribute("style")
-        document.querySelector(".p-loose").innerHTML = "Oh no! Unfortunately you didn't find the secret word in less than 7 wrong answers. You had to find the word \"" + motSecret + "\". Try again, I'm sure you'll succeed 🥵"
+        document.querySelector(".p-loose").innerHTML = "Oh no! Unfortunately you didn't find the secret word in less than 7 answers. You had to find the word \"" + motSecret + "\". Try again, I'm sure you'll succeed 🥵"
         document.querySelector(".btn-reload-loose").addEventListener("click", reload)
     } else if (lettreTrouvee === motSecret.length) {
         document.querySelector(".contener").style.display = "none";

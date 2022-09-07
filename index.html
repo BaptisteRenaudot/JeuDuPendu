@@ -13,8 +13,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
 
-<body class="bg-gray-100 " onKeyPress="if (event.keyCode == 13) validerLetter()">
-
+<body class="bg-gray-100 dark:bg-gray-900" onKeyPress="if (event.keyCode == 13) validerLetter()">
 
 
     <div class="contener">
@@ -23,13 +22,16 @@
         </div>
 
         <div class="boxInput">
-            <input type="text" class="inputLetter" name="letter" id="letter" maxlength="1">
-            <a class="okLetter ml-2 relative inline-block text-sm font-medium text-gray-500 group
-                    active:text-indigo-500 focus:outline-none focus:ring">
+            <input type="text"
+                class="inputLetter focus:outline-none focus:border-gray-500 dark:focus:border-blue-400 dark:bg-gray-800 dark:border-transparent dark:focus:text-white"
+                name="letter" id="letter" maxlength="1">
+            <a class="okLetter ml-2 relative inline-block text-sm font-medium text-gray-500 dark:text-blue-400 group
+                    active:text-gray-500 dark:active:text-white focus:outline-none focus:ring">
                 <span
-                    class="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gray-500 group-hover:translate-y-0.5 group-hover:translate-x-0.5"></span>
+                    class="absolute inset-0 transition-transform translate-x-0 translate-y-0 bg-gray-500 dark:bg-blue-400 group-hover:translate-y-0.5 group-hover:translate-x-0.5"></span>
 
-                <span class="relative block px-8 py-3 bg-white border border-current">
+                <span
+                    class="relative block px-8 py-3 bg-white dark:bg-gray-800 dark:white border border-gray-500 dark:border-transparent">
                     Ok !
                 </span>
             </a>
@@ -37,7 +39,8 @@
 
         <div aria-valuemax="100" aria-valuemin="0" role="progressbar"
             class="h-2 sm:w-1/4 w-1/2 overflow-hidden rounded-full bg-gray-200 transition mb-7">
-            <div style="width: 0; transition: 0.5s linear;" class="progressBar flex h-full bg-gray-500 transition">
+            <div style="width: 0; transition: 0.5s linear;"
+                class="progressBar flex h-full bg-gray-500 dark:bg-blue-400 transition">
             </div>
         </div>
     </div>
