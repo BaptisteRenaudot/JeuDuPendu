@@ -37,3 +37,10 @@ body {
 .inputLetter:focus {
     border-color: #6b7280;
 }
+
+.ionicon {
+    width: 30px;
+    display: inline-block;
+    height: 30px;
+    fill: red;
+}
