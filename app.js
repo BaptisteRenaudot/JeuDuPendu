@@ -1,58 +1,3 @@
-/* Fonction getsPosts qui :
-    Récupère le premier utilisateur depuis https://jsonplaceholder.typicode.com/users
-    Récupères les articles du premier utilisateur depuis https://jsonplaceholder.typicode.com/comments?userId={ID}
-    Renvois les articles au format json
-*/
-
-
-
-// let get = function (url, success) {
-//     let xhr = new window.XMLHttpRequest()
-
-//     xhr.onreadystatechange = function () {
-//         if (xhr.readyState === 4) {
-//             success(xhr.responseText)
-//         }
-//     }
-
-//     xhr.open('GET', url, true)
-//     xhr.send()
-// }
-
-// let getPosts = function () {
-//     get('https://hp-api.herokuapp.com/api/characters', function (response) {
-//         let users = JSON.parse(response)
-//         users.forEach(e => {
-//             let p = document.createElement("p")
-//             let contenu_p = document.createTextNode(e.name)
-
-//             p.appendChild(contenu_p)
-
-//             p.classList.add("demo")
-
-//             console.log(p);
-
-//             let afficher = document.getElementsByTagName("body")[0]
-//             afficher.appendChild(p)
-//         });
-
-//     })
-// }
-
-// console.log(getPosts());
-
-
-// $('.multiple-items').slick({
-//     infinite: true,
-//     slidesToShow: 3,
-//     slidesToScroll: 3
-// });
-
-
-
-
-
-
 /** Récupération du mot aléatoire */
 let demo = document.querySelector(".demo")
 
@@ -83,23 +28,6 @@ tabMot.forEach(e => {
 });
 /** Fin de la séparation des lettres */
 
-/** Changement des underscores en mot */
-// function change() {
-//     let tabMot = motSecret.split('')
-//     let divUnderscore = document.querySelectorAll(".motSecret")
-
-//     for (let i = 0; i < divUnderscore.length; i++) {
-//         const e = divUnderscore[i];
-
-//         e.innerText = (tabMot[i])
-//     }
-
-
-// }
-
-// setTimeout(change, 1000)
-/** Fin du changement des underscores en lettres */
-
 
 /** Récupération de la valeur de l'input + affichage d'une lettre si trouvée par l'user + Compte le nombre de réponses fausses + Création d'une progressBar*/
 let inputUserValue
@@ -115,6 +43,7 @@ let nbFewLetter = 0
 let lettrePlusieursFoisTab = []
 let lettre = 0
 let lettreTrouvee = 0
+let vierestante = 7
 
 function validerLetter() {
     let inputUser = document.querySelector(".inputLetter")
@@ -177,8 +106,17 @@ function validerLetter() {
 
     if (vie === 0) {
         nbvie++
+        vierestante--
         vie++
+
+        if (nbvie <= 7) {
+            let img = document.getElementById("img" + vierestante)
+            img.src = "coeur-gris.svg"
+        }
+
     }
+
+    console.log(vierestante);
 
     console.log("Nombre de lettres fausses : " + nbvie);
 
@@ -210,15 +148,12 @@ function reload() {
 
 
 /** Affichage des vies */
-for (let i = 0; i < 7; i++) {
-    // document.querySelector(".vie").outerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="coeur ionicon" fill="red" viewBox="0 0 512 512"><title>Heart</title><path d="M256 448a32 32 0 01-18-5.57c-78.59-53.35-112.62-89.93-131.39-112.8-40-48.75-59.15-98.8-58.61-153C48.63 114.52 98.46 64 159.08 64c44.08 0 74.61 24.83 92.39 45.51a6 6 0 009.06 0C278.31 88.81 308.84 64 352.92 64c60.62 0 110.45 50.52 111.08 112.64.54 54.21-18.63 104.26-58.61 153-18.77 22.87-52.8 59.45-131.39 112.8a32 32 0 01-18 5.56z"/></svg>'
-    var coeur = document.querySelector('.contener')
-    var svg = document.createElement('svg'); //Get svg element
-    var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); //Create a path in SVG's namespace
-    svg.setAttribute("viewBox", "0 0 512 512")
+for (let i = 0; i < vierestante; i++) {
+    var coeur = document.querySelector('.pimg')
+    var svg = document.createElement('img');
+    svg.src = "coeur-rempli.svg";
     svg.classList.add("ionicon")
-    newElement.setAttribute("d", "M256 448a32 32 0 01-18-5.57c-78.59-53.35-112.62-89.93-131.39-112.8-40-48.75-59.15-98.8-58.61-153C48.63 114.52 98.46 64 159.08 64c44.08 0 74.61 24.83 92.39 45.51a6 6 0 009.06 0C278.31 88.81 308.84 64 352.92 64c60.62 0 110.45 50.52 111.08 112.64.54 54.21-18.63 104.26-58.61 153-18.77 22.87-52.8 59.45-131.39 112.8a32 32 0 01-18 5.56z"); //Set path's data
-    svg.appendChild(newElement);
+    svg.setAttribute('id', 'img' + (i))
     coeur.appendChild(svg);
 }
 
