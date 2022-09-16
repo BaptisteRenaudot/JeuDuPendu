@@ -3,7 +3,6 @@ let demo = document.querySelector(".demo");
 
 let motSecret = demo.innerHTML;
 
-console.log(motSecret);
 /** Fin de la récupération du mot aléatoire */
 
 /** Séparation des lettres */
@@ -19,8 +18,6 @@ tabMot.forEach((e) => {
   div.appendChild(contenu_div);
 
   div.classList.add("motSecret");
-
-  console.log(div);
 
   let afficher = document.querySelector(".box");
   afficher.appendChild(div);
@@ -48,8 +45,6 @@ function validerLetter() {
   let inputUserValue = inputUser.value.toLowerCase();
 
   let tabMot = motSecret.split("");
-
-  console.log(longProgress);
 
   let divUnderscore = document.querySelectorAll(".motSecret");
   let vie = 0;
@@ -90,16 +85,6 @@ function validerLetter() {
     }
   }
 
-  console.log("Lettre trouvée : " + lettreTrouvee);
-
-  if (count > 1) {
-    console.log("Plusieurs fois la lettre " + inputUserValue);
-  }
-
-  console.log(count);
-
-  console.log("nbFewLetter " + nbFewLetter);
-
   if (vie === 0) {
     nbvie++;
     vierestante--;
@@ -110,10 +95,6 @@ function validerLetter() {
       img.src = "coeur-gris.svg";
     }
   }
-
-  console.log(vierestante);
-
-  console.log("Nombre de lettres fausses : " + nbvie);
 
   inputUser.value = "";
 
